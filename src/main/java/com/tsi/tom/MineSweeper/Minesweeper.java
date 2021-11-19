@@ -17,16 +17,22 @@ public class Minesweeper {
             switch(userChoice)
             {
                 case 1:
-                    gridSize = 5;
+                    gridSize = 8;
+                    break;
                 case 2:
-                    gridSize = 10;
+                    gridSize = 16;
+                    break;
                 case 3:
                     gridSize = 20;
+                    break;
             }
         }
 
         //Create an instance of the game
         Grid game = new Grid(gridSize, gridSize, totalMines);
+        game.DisplayBoard();
+        //Player interaction (Choosing a tile)
+
 
         input.close();
     }
