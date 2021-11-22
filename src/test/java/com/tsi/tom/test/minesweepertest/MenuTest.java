@@ -1,19 +1,18 @@
-package com.tsi.tom.minesweepertest;
+package com.tsi.tom.test.minesweepertest;
 
 import com.tsi.tom.minesweeper.Menu;
-import com.tsi.tom.minesweeper.Minesweeper;
-import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
+import org.junit.jupiter.api.Test;
 import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MenuTest {
 
-    private static final Logger logger = Logger.getLogger(Minesweeper.class.getName());
+    private static final Logger logger = Logger.getLogger(Menu.class.getName());
+
     @Test
-    public void Menutest()
+    public void MenuTest()
     {
         Menu menu = new Menu(4);
 
