@@ -1,7 +1,6 @@
-package com.tsi.tom.MineSweeper;
+package com.tsi.tom.mineSweeper;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 public class Grid implements Game{
@@ -11,28 +10,28 @@ public class Grid implements Game{
         this.gY = gY;
         this.gSize = gX * gY;
         this.gTotalMines = gTotalMines;
-        this.gameBoard = new ArrayList<ArrayList<Tile>>(gX);
-        CreateBoard();
+        this.gameBoard = new ArrayList<>(gX);
+        createBoard();
     }
 
     ////Variables
     //Declaring the Size of the board
-    public int gSize;
-    public int gX;
-    public int gY;
-    public int gTotalMines;
+    private int gSize;
+    private int gX;
+    private int gY;
+    private int gTotalMines;
 
     //The Game board
     List<ArrayList<Tile>> gameBoard;
 
     ////Methods
     //Check if the tile is within the grid
-    public boolean IsValid(){
+    public boolean isValid(){
         return true;
     }
 
     //Checks if the user tile is a Mine or a Clear
-    public int SelectTile(int userX, int userY)
+    public int selectTile(int userX, int userY)
     {
         //If the tile the user has selected is a clear tile
         if(gameBoard.get(userX).get(userY).getTileType() == 1)
@@ -43,7 +42,7 @@ public class Grid implements Game{
         return 0;
     }
 
-    public void CreateBoard() {
+    public void createBoard() {
         //Random function
         //Check if the tile
         int randomValue = 0;
@@ -52,7 +51,7 @@ public class Grid implements Game{
         //Create a tile based on the inputs from the user
         for(int row = 0; row < gX; row++)
         {
-            ArrayList<Tile> temp = new ArrayList<Tile>(); //Create a list to push into the 2D list
+            ArrayList<Tile> temp = new ArrayList<>(); //Create a list to push into the 2D list
             temp.clear(); //Remove old elements from the array
             for(int column = 0; column < gY; column++)
             {
@@ -75,15 +74,15 @@ public class Grid implements Game{
     @Override
     public String toString() {
 
-        String temp = new String();
+        StringBuilder bld = new StringBuilder();
         for(int row = 0; row < gX; row++)
         {
             for(int column = 0; column < gY; column++)
             {
-                temp += gameBoard.get(row).get(column).getCurrentSymbol() + " ";
+                bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + " ");
             }
-            temp += "\n";
+            bld.append("\n");
         }
-        return temp;
+        return bld.toString();
     }
 }

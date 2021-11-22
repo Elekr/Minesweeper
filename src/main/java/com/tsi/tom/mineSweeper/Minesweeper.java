@@ -1,4 +1,4 @@
-package com.tsi.tom.MineSweeper;
+package com.tsi.tom.mineSweeper;
 
 import java.util.Scanner;
 
