@@ -2,8 +2,11 @@ package com.tsi.tom.minesweeper;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 public class Grid implements Game{
+
+
 
     public Grid(int gX, int gY, int gTotalMines) {
         this.gX = gX;

@@ -1,14 +1,18 @@
 package com.tsi.tom.minesweeper;
 
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Minesweeper {
+
+    private static final Logger logger = Logger.getLogger( Grid.class.getName() );
 
     public static void main(String[] args){
 
         //Ask user for grid size input
         Scanner input = new Scanner(System.in);
-        System.out.println("Please choose your difficulty: 1:Easy 2:Medium 3:Hard");
+        logger.info("Please choose your difficulty: 1:Easy 2:Medium 3:Hard");
         int userChoice = input.nextInt();
         int gridSize = 0;
         int totalMines = 0;
@@ -26,7 +30,7 @@ public class Minesweeper {
                     gridSize = 20;
                     break;
                 default:
-                    System.out.println("Please choose an appropriate selection");
+                    logger.info("Please choose an appropriate selection");
             }
         }
 
@@ -34,7 +38,7 @@ public class Minesweeper {
         Grid game = new Grid(gridSize, gridSize, totalMines);
 
         //Display the current state of the game
-        System.out.println(game);
+        logger.info("output \n" +game);
         //Player interaction (Choosing a tile)
 
         input.close();
