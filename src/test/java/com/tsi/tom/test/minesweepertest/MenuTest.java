@@ -12,9 +12,9 @@ public class MenuTest {
     private static final Logger logger = Logger.getLogger(Menu.class.getName());
 
     @Test
-    public void MenuTest()
+    public void testMenuValues()
     {
-        Menu menu = new Menu(4);
+        Menu menu = new Menu(1);
 
         switch(menu.toString())
         {
@@ -29,5 +29,11 @@ public class MenuTest {
                 break;
             default:
         }
+    }
+
+    @Test
+    public void testJacoco()
+    {
+        assertEquals(1, 1, "testing");
     }
 }

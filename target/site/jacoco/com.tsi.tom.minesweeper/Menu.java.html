@@ -7,13 +7,13 @@ public class Menu {
 
     @Override
     public String toString() {
-<span class="nc" id="L10">        return gameDifficulty;</span>
+<span class="fc" id="L10">        return gameDifficulty;</span>
     }
 
-<span class="nc" id="L13">    private static final Logger logger = Logger.getLogger(Menu.class.getName());</span>
+<span class="fc" id="L13">    private static final Logger logger = Logger.getLogger(Menu.class.getName());</span>
 
     public int getGridSize() {
-<span class="nc" id="L16">        return gridSize;</span>
+<span class="fc" id="L16">        return gridSize;</span>
     }
 
     public int getTotalMines() {
@@ -24,21 +24,21 @@ public class Menu {
     int totalMines;
     String gameDifficulty;
 
-<span class="nc" id="L27">    public Menu(int input) {</span>
-<span class="nc" id="L28">        InitSize(input);</span>
-<span class="nc" id="L29">    }</span>
+<span class="fc" id="L27">    public Menu(int input) {</span>
+<span class="fc" id="L28">        InitSize(input);</span>
+<span class="fc" id="L29">    }</span>
 
     public String InitSize(int userInput)
     {
         //Ask user for grid size input
 
-<span class="nc bnc" id="L35" title="All 4 branches missed.">        switch(userInput)</span>
+<span class="pc bpc" id="L35" title="3 of 4 branches missed.">        switch(userInput)</span>
         {
             case 1:
-<span class="nc" id="L38">                gridSize = 8;</span>
-<span class="nc" id="L39">                totalMines = 10;</span>
-<span class="nc" id="L40">                gameDifficulty = &quot;Easy&quot;;</span>
-<span class="nc" id="L41">                break;</span>
+<span class="fc" id="L38">                gridSize = 8;</span>
+<span class="fc" id="L39">                totalMines = 10;</span>
+<span class="fc" id="L40">                gameDifficulty = &quot;Easy&quot;;</span>
+<span class="fc" id="L41">                break;</span>
             case 2:
 <span class="nc" id="L43">                gridSize = 16;</span>
 <span class="nc" id="L44">                totalMines = 20;</span>
@@ -52,7 +52,7 @@ public class Menu {
             default:
 <span class="nc" id="L53">                logger.info(&quot;Please choose an appropriate selection&quot;);</span>
         }
-<span class="nc" id="L55">        return &quot;&quot;;</span>
+<span class="fc" id="L55">        return &quot;&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
