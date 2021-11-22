@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Grid implements Game{
 
-
-
     public Grid(int gX, int gY, int gTotalMines) {
         this.gX = gX;
         this.gY = gY;
