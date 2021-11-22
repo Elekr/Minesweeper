@@ -9,7 +9,10 @@ public class Minesweeper {
 
     public static void main(String[] args){
 
-        Menu menu = new Menu();
+        Scanner input = new Scanner(System.in);
+        logger.info("Please choose your difficulty: 1:Easy 2:Medium 3:Hard");
+        int userChoice = input.nextInt();
+        Menu menu = new Menu(userChoice);
         //Create an instance of the game
         Grid game = new Grid(menu.getGridSize(), menu.getGridSize(), menu.getTotalMines());
 

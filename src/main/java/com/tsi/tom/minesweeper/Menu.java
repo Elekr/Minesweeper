@@ -5,6 +5,11 @@ import java.util.logging.Logger;
 
 public class Menu {
 
+    @Override
+    public String toString() {
+        return gameDifficulty;
+    }
+
     private static final Logger logger = Logger.getLogger(Menu.class.getName());
 
     public int getGridSize() {
@@ -17,30 +22,32 @@ public class Menu {
 
     int gridSize;
     int totalMines;
+    String gameDifficulty;
 
-    public Menu() {
-        InitSize();
+    public Menu(int input) {
+        InitSize(input);
     }
 
-    public String InitSize()
+    public String InitSize(int userInput)
     {
         //Ask user for grid size input
-        Scanner input = new Scanner(System.in);
-        logger.info("Please choose your difficulty: 1:Easy 2:Medium 3:Hard");
-        int userChoice = input.nextInt();
-        switch(userChoice)
+
+        switch(userInput)
         {
             case 1:
                 gridSize = 8;
                 totalMines = 10;
+                gameDifficulty = "Easy";
                 break;
             case 2:
                 gridSize = 16;
                 totalMines = 20;
+                gameDifficulty = "Medium";
                 break;
             case 3:
                 gridSize = 20;
                 totalMines = 30;
+                gameDifficulty = "Hard";
                 break;
             default:
                 logger.info("Please choose an appropriate selection");
