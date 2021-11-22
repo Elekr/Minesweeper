@@ -1,8 +1,7 @@
 package com.tsi.tom.MineSweeper;
 
 public class Tile {
-    public Tile(int tType) {
-        this.tileType = tType;
+    public Tile() {
         this.tileChecked = false;
         this.currentSymbol = '#';
     }
@@ -32,7 +31,7 @@ public class Tile {
     }
 
     private char currentSymbol;
-    private int tileType;
+    protected int tileType;
     private boolean tileChecked;
 
 

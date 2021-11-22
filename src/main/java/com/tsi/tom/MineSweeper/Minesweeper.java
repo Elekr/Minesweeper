@@ -30,9 +30,10 @@ public class Minesweeper {
 
         //Create an instance of the game
         Grid game = new Grid(gridSize, gridSize, totalMines);
-        game.DisplayBoard();
-        //Player interaction (Choosing a tile)
 
+        //Display the current state of the game
+        System.out.println(game);
+        //Player interaction (Choosing a tile)
 
         input.close();
     }

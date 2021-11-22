@@ -61,27 +61,29 @@ public class Grid implements Game{
                 if(randomValue < bombThreshold)
                 {
 
-                    temp.add(new Clear(1));
+                    temp.add(new Clear());
                 }
                 else
                 {
-                    temp.add(new Mine(1));
+                    temp.add(new Mine());
                 }
             }
             gameBoard.add(row, temp);
         }
     }
 
-    public void DisplayBoard()
-    {
+    @Override
+    public String toString() {
+
+        String temp = new String();
         for(int row = 0; row < gX; row++)
         {
             for(int column = 0; column < gY; column++)
             {
-               char output = gameBoard.get(row).get(column).getCurrentSymbol();
-                System.out.print(output + " ");
+                temp += gameBoard.get(row).get(column).getCurrentSymbol() + " ";
             }
-            System.out.println();
+            temp += "\n";
         }
+        return temp;
     }
 }
