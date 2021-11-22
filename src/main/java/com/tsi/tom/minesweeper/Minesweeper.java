@@ -1,4 +1,4 @@
-package com.tsi.tom.mineSweeper;
+package com.tsi.tom.minesweeper;
 
 import java.util.Scanner;
 
@@ -25,6 +25,8 @@ public class Minesweeper {
                 case 3:
                     gridSize = 20;
                     break;
+                default:
+                    System.out.println("Please choose an appropriate selection");
             }
         }
 

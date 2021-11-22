@@ -1,4 +1,4 @@
-package com.tsi.tom.mineSweeper;
+package com.tsi.tom.minesweeper;
 
 public class Mine extends Tile{
     public Mine() {

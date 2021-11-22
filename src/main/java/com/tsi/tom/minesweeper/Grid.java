@@ -1,4 +1,4 @@
-package com.tsi.tom.mineSweeper;
+package com.tsi.tom.minesweeper;
 
 import java.util.ArrayList;
 import java.util.List;
