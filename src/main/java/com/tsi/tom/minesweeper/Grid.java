@@ -75,7 +75,7 @@ public class Grid implements Game{
 
     public void addMines()
     {
-        
+        //TODO: add this to salt in the mines to the grid
     }
 
     public void calculateMines()

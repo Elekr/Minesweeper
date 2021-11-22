@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class Minesweeper {
 
-    private final static Logger logger = Logger.getLogger(Minesweeper.class.getName());
+    private static final  Logger logger = Logger.getLogger(Minesweeper.class.getName());
 
     public static void main(String[] args){
 
