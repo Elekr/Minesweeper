@@ -2,7 +2,6 @@ package com.tsi.tom.minesweeper;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Grid implements Game{
 
@@ -63,7 +62,6 @@ public class Grid implements Game{
                 //if the tType of the tile is 0 then it's a bomb, else it's clear (1)
                 if(randomValue < bombThreshold)
                 {
-
                     temp.add(new Clear());
                 }
                 else
@@ -73,6 +71,11 @@ public class Grid implements Game{
             }
             gameBoard.add(row, temp);
         }
+    }
+
+    public void addMines()
+    {
+        
     }
 
     public void calculateMines()
