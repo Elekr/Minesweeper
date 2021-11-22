@@ -50,6 +50,7 @@ public class Grid implements Game{
         //Check if the tile
         int randomValue = 0;
         int bombThreshold = 0;
+        calculateMines();
 
         //Create a tile based on the inputs from the user
         for(int row = 0; row < gX; row++)
@@ -72,6 +73,11 @@ public class Grid implements Game{
             }
             gameBoard.add(row, temp);
         }
+    }
+
+    public void calculateMines()
+    {
+        gTotalMines = gSize / 8;
     }
 
     @Override
