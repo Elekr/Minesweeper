@@ -33,7 +33,7 @@ public class Grid implements Game{
     private int seed;
 
 
-<span class="nc" id="L36">    class Boundaries</span>
+<span class="fc" id="L36">    class Boundaries</span>
     {
         int min;
         int max;
@@ -47,9 +47,9 @@ public class Grid implements Game{
 
     public boolean isValid(int uX, int uY, int type)
     {
-<span class="nc bnc" id="L50" title="All 4 branches missed.">        if(gameBoard.get(uX).get(uY).getTileType() == type &amp;&amp; !gameBoard.get(uX).get(uY).isTileChecked())</span>
+<span class="pc bpc" id="L50" title="2 of 4 branches missed.">        if(gameBoard.get(uX).get(uY).getTileType() == type &amp;&amp; !gameBoard.get(uX).get(uY).isTileChecked())</span>
         {
-<span class="nc" id="L52">            return true;</span>
+<span class="fc" id="L52">            return true;</span>
         }
         else
         {
@@ -62,12 +62,12 @@ public class Grid implements Game{
     {
         //TODO:Validate user input but in the main
         //If the tile the user has selected is a clear tile
-<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(isValid(userX, userY, 1)) //If it's a clear tile and it hasn't been checked yet</span>
+<span class="pc bpc" id="L65" title="1 of 2 branches missed.">        if(isValid(userX, userY, 1)) //If it's a clear tile and it hasn't been checked yet</span>
         {
-<span class="nc" id="L67">            gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo</span>
-<span class="nc" id="L68">            int bombsSurrounding = checkSurroundingTiles(userX, userY);</span>
-<span class="nc" id="L69">            gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number</span>
-<span class="nc" id="L70">            return 3; // Keep running</span>
+<span class="fc" id="L67">            gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo</span>
+<span class="fc" id="L68">            int bombsSurrounding = checkSurroundingTiles(userX, userY);</span>
+<span class="fc" id="L69">            gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number</span>
+<span class="fc" id="L70">            return 3; // Keep running</span>
         }
 <span class="nc bnc" id="L72" title="All 2 branches missed.">        else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine</span>
         {
@@ -85,9 +85,9 @@ public class Grid implements Game{
 
     public void calculateBounds(int userValue, Boundaries coords)
     {
-<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (userValue == 0) //If on the boundary of the grid</span>
+<span class="pc bpc" id="L88" title="1 of 2 branches missed.">        if (userValue == 0) //If on the boundary of the grid</span>
         {
-<span class="nc" id="L90">            coords.min = userValue; //Don't decrease it cuz index</span>
+<span class="fc" id="L90">            coords.min = userValue; //Don't decrease it cuz index</span>
         }
 <span class="nc bnc" id="L92" title="All 2 branches missed.">        else if (userValue == gX)// if at the upper boundary</span>
         {
@@ -98,19 +98,19 @@ public class Grid implements Game{
 <span class="nc" id="L98">            coords.min = (userValue - 1);</span>
 <span class="nc" id="L99">            coords.max = (userValue + 1);</span>
         }
-<span class="nc" id="L101">    }</span>
+<span class="fc" id="L101">    }</span>
 
     public int checkSurroundingTiles(int uX, int uY)
     {
-<span class="nc" id="L105">        int count = 0; //Used to count the mines around the tile</span>
+<span class="fc" id="L105">        int count = 0; //Used to count the mines around the tile</span>
 
-<span class="nc" id="L107">        Boundaries x = new Boundaries();</span>
-<span class="nc" id="L108">        Boundaries y = new Boundaries();</span>
+<span class="fc" id="L107">        Boundaries x = new Boundaries();</span>
+<span class="fc" id="L108">        Boundaries y = new Boundaries();</span>
 
-<span class="nc" id="L110">        calculateBounds(uX, x); //Calculate the bounds for the x and y axis</span>
-<span class="nc" id="L111">        calculateBounds(uY, y);</span>
+<span class="fc" id="L110">        calculateBounds(uX, x); //Calculate the bounds for the x and y axis</span>
+<span class="fc" id="L111">        calculateBounds(uY, y);</span>
 
-<span class="nc bnc" id="L113" title="All 2 branches missed.">        for(int row = x.min; row &lt; x.max; row++) // go through a 3x3 grid around the selected tile</span>
+<span class="pc bpc" id="L113" title="1 of 2 branches missed.">        for(int row = x.min; row &lt; x.max; row++) // go through a 3x3 grid around the selected tile</span>
         {
 <span class="nc bnc" id="L115" title="All 2 branches missed.">            for(int column = y.min; column &lt; y.max; column++)</span>
             {
@@ -120,7 +120,7 @@ public class Grid implements Game{
                 }
             }
         }
-<span class="nc" id="L123">        return count;</span>
+<span class="fc" id="L123">        return count;</span>
     }
 
 
