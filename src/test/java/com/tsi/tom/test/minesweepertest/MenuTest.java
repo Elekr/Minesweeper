@@ -16,19 +16,22 @@ public class MenuTest {
     {
         Menu menu;
 
-        for(int i = 1; i < 3; i++)
+        for(int i = 1; i <= 3; i++)
         {
             menu = new Menu(i);
             switch(menu.toString())
             {
                 case "Easy":
                     assertEquals(menu.getGridSize(), 8, "grid size not set correctly");
+                    assertEquals(menu.getGameDifficulty(), "Easy", "Game state");
                     break;
                 case "Medium":
                     assertEquals(menu.getGridSize(), 16, "grid size not set correctly");
+                    assertEquals(menu.getGameDifficulty(), "Medium", "Game state");
                     break;
                 case "Hard":
                     assertEquals(menu.getGridSize(), 20, "grid size not set correctly");
+                    assertEquals(menu.getGameDifficulty(), "Hard", "Game state");
                     break;
                 default:
             }

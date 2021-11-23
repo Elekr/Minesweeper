@@ -12,7 +12,7 @@ public class Minesweeper {
         success,
         running,
         gameover,
-        quit;
+        quit
     }
 
     public static void clearScreen() {
@@ -40,7 +40,7 @@ public class Minesweeper {
             logger.info("Please select a tile");
 
             userChoice = input.next();
-            if(userChoice == "q")
+            if(userChoice.equals('q'))
             {
                 gamestate = 0;
             }

@@ -16,18 +16,20 @@ public class Menu {
         return gridSize;
     }
 
+    public String getGameDifficulty() {
+        return gameDifficulty;
+    }
 
-    int gridSize;
-    String gameDifficulty;
+    private int gridSize;
+
+    private String gameDifficulty;
 
     public Menu(int input) {
         InitSize(input);
     }
 
-    public String InitSize(int userInput)
+    public void InitSize(int userInput)
     {
-        //Ask user for grid size input
-
         switch(userInput)
         {
             case 1:
@@ -45,6 +47,5 @@ public class Menu {
             default:
                 logger.info("Please choose an appropriate selection");
         }
-        return "";
     }
 }

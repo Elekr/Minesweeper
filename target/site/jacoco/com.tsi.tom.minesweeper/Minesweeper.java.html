@@ -12,7 +12,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L12">        success,</span>
 <span class="nc" id="L13">        running,</span>
 <span class="nc" id="L14">        gameover,</span>
-<span class="nc" id="L15">        quit;</span>
+<span class="nc" id="L15">        quit</span>
     }
 
     public static void clearScreen() {
@@ -40,7 +40,7 @@ import java.util.logging.Logger;
 <span class="nc" id="L40">            logger.info(&quot;Please select a tile&quot;);</span>
 
 <span class="nc" id="L42">            userChoice = input.next();</span>
-<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(userChoice == &quot;q&quot;)</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(userChoice.equals('q'))</span>
             {
 <span class="nc" id="L45">                gamestate = 0;</span>
             }
