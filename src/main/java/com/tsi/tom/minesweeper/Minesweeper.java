@@ -14,7 +14,8 @@ public class Minesweeper {
         int userChoice = input.nextInt();
         Menu menu = new Menu(userChoice);
         //Create an instance of the game
-        Grid game = new Grid(menu.getGridSize(), menu.getGridSize(), menu.getTotalMines());
+        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());
+
 
 
         //Display the current state of the game

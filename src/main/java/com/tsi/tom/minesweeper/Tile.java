@@ -1,11 +1,13 @@
 package com.tsi.tom.minesweeper;
 
 public class Tile {
+    //Constructor
     public Tile() {
         this.tileChecked = false;
         this.currentSymbol = '#';
     }
 
+    //Methods
     public int getTileType() {
         return tileType;
     }
@@ -30,6 +32,7 @@ public class Tile {
         this.currentSymbol = currentSymbol;
     }
 
+    //Variables
     private char currentSymbol;
     protected int tileType;
     private boolean tileChecked;

@@ -1,16 +1,16 @@
 package com.tsi.tom.minesweeper;
 
+import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Grid implements Game{
 
-    public Grid(int gX, int gY, int gTotalMines) {
+    public Grid(int gX, int gY) {
         this.gX = gX;
         this.gY = gY;
         this.gSize = gX * gY;
-        this.gTotalMines = gTotalMines;
-        this.gameBoard = new ArrayList<>(gX);
+        this.gameBoard = new ArrayList<>();
         createBoard();
     }
 
@@ -47,7 +47,9 @@ public class Grid implements Game{
         //Check if the tile
         int randomValue = 0;
         int bombThreshold = 0;
-        calculateMines();
+        calculateMines(); //Get the total mines
+
+        //Salt the mines into the board
 
         //Create a tile based on the inputs from the user
         for(int row = 0; row < gX; row++)
@@ -56,7 +58,6 @@ public class Grid implements Game{
             temp.clear(); //Remove old elements from the array
             for(int column = 0; column < gY; column++)
             {
-
                 //if the tType of the tile is 0 then it's a bomb, else it's clear (1)
                 if(randomValue < bombThreshold)
                 {
@@ -71,9 +72,24 @@ public class Grid implements Game{
         }
     }
 
-    public void addMines()
+    public void addMines() //TODO: do this before we create the board?
     {
-        //TODO: add this to salt in the mines to the grid
+        Math.random();
+        int saltMines = gTotalMines;
+
+        while(saltMines != 0) //While there are still mines to be added to grid
+        {
+            int random_X = (int)Math.floor(Math.random()*(gX-0+1)+0); //Generate a random number within the grid bounds
+            int random_Y = (int)Math.floor(Math.random()*(gY-0+1)+0);
+
+            if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object
+            {
+                if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine
+                {
+                    gameBoard.get(random_X).add(new Mine()); //Make da mine
+                }
+            }
+        }
     }
 
     public void calculateMines()
