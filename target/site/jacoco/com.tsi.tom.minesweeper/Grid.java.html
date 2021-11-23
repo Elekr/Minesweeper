@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Grid.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MineSweeper</a> &gt; <a href="index.source.html" class="el_package">com.tsi.tom.minesweeper</a> &gt; <span class="el_source">Grid.java</span></div><h1>Grid.java</h1><pre class="source lang-java linenums">package com.tsi.tom.minesweeper;
 
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Grid implements Game{
 
-<span class="nc" id="L9">    public Grid(int gX, int gY) {</span>
-<span class="nc" id="L10">        this.gX = gX;</span>
-<span class="nc" id="L11">        this.gY = gY;</span>
-<span class="nc" id="L12">        this.gSize = gX * gY;</span>
-<span class="nc" id="L13">        this.gameBoard = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L14">        this.currentMines = gTotalMines;</span>
-<span class="nc" id="L15">        createBoard();</span>
-<span class="nc" id="L16">    }</span>
+<span class="fc" id="L9">    public Grid(int gX, int gY, int seed) {</span>
+<span class="fc" id="L10">        this.gX = gX;</span>
+<span class="fc" id="L11">        this.gY = gY;</span>
+<span class="fc" id="L12">        this.gSize = gX * gY;</span>
+<span class="fc" id="L13">        this.gameBoard = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L14">        this.currentMines = gTotalMines;</span>
+<span class="fc" id="L15">        createBoard();</span>
+<span class="fc" id="L16">    }</span>
+
+    public int getgSize() {
+<span class="fc" id="L19">        return gSize;</span>
+    }
+
+    public int getgTotalMines() {
+<span class="fc" id="L23">        return gTotalMines;</span>
+    }
 
     ////Variables
     //Declaring the Size of the board
@@ -22,29 +30,30 @@ public class Grid implements Game{
     private int gY;
     private int gTotalMines;
     private int currentMines;
+    private int seed;
 
 
-<span class="nc" id="L27">    class Boundaries</span>
+<span class="nc" id="L36">    class Boundaries</span>
     {
-<span class="nc" id="L29">        int min = 0;</span>
-<span class="nc" id="L30">        int max = 0;</span>
+        int min;
+        int max;
     }
 
     //The Game board
-    List&lt;ArrayList&lt;Tile&gt;&gt; gameBoard;
+    private final List&lt;ArrayList&lt;Tile&gt;&gt; gameBoard;
 
     ////Methods
     //Check if the tile is within the grid
 
     public boolean isValid(int uX, int uY, int type)
     {
-<span class="nc bnc" id="L41" title="All 4 branches missed.">        if(gameBoard.get(uX).get(uY).getTileType() == type &amp;&amp; !gameBoard.get(uX).get(uY).isTileChecked())</span>
+<span class="nc bnc" id="L50" title="All 4 branches missed.">        if(gameBoard.get(uX).get(uY).getTileType() == type &amp;&amp; !gameBoard.get(uX).get(uY).isTileChecked())</span>
         {
-<span class="nc" id="L43">            return true;</span>
+<span class="nc" id="L52">            return true;</span>
         }
         else
         {
-<span class="nc" id="L47">            return false;</span>
+<span class="nc" id="L56">            return false;</span>
         }
     }
 
@@ -53,128 +62,128 @@ public class Grid implements Game{
     {
         //TODO:Validate user input but in the main
         //If the tile the user has selected is a clear tile
-<span class="nc bnc" id="L56" title="All 2 branches missed.">        if(isValid(userX, userY, 1)) //If it's a clear tile and it hasn't been checked yet</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        if(isValid(userX, userY, 1)) //If it's a clear tile and it hasn't been checked yet</span>
         {
-<span class="nc" id="L58">            gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo</span>
-<span class="nc" id="L59">            int bombsSurrounding = checkSurroundingTiles(userX, userY);</span>
-<span class="nc" id="L60">            gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number</span>
-<span class="nc" id="L61">            return 3; // Keep running</span>
+<span class="nc" id="L67">            gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo</span>
+<span class="nc" id="L68">            int bombsSurrounding = checkSurroundingTiles(userX, userY);</span>
+<span class="nc" id="L69">            gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number</span>
+<span class="nc" id="L70">            return 3; // Keep running</span>
         }
-<span class="nc bnc" id="L63" title="All 2 branches missed.">        else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine</span>
+<span class="nc bnc" id="L72" title="All 2 branches missed.">        else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine</span>
         {
-<span class="nc" id="L65">            return 1; // Game over state</span>
+<span class="nc" id="L74">            return 1; // Game over state</span>
         }
-<span class="nc bnc" id="L67" title="All 2 branches missed.">        else if (currentMines == 0)</span>
+<span class="nc bnc" id="L76" title="All 2 branches missed.">        else if (currentMines == 0)</span>
         {
-<span class="nc" id="L69">            return 4; // Success!</span>
+<span class="nc" id="L78">            return 4; // Success!</span>
         }
         else
         {
-<span class="nc" id="L73">            return 2; // Invalid choice</span>
+<span class="nc" id="L82">            return 2; // Invalid choice</span>
         }
     }
 
     public void calculateBounds(int userValue, Boundaries coords)
     {
-<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (userValue == 0) //If on the boundary of the grid</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if (userValue == 0) //If on the boundary of the grid</span>
         {
-<span class="nc" id="L81">            coords.min = userValue; //Don't decrease it cuz index</span>
+<span class="nc" id="L90">            coords.min = userValue; //Don't decrease it cuz index</span>
         }
-<span class="nc bnc" id="L83" title="All 2 branches missed.">        else if (userValue == gX)// if at the upper boundary</span>
+<span class="nc bnc" id="L92" title="All 2 branches missed.">        else if (userValue == gX)// if at the upper boundary</span>
         {
-<span class="nc" id="L85">            coords.max = userValue;</span>
+<span class="nc" id="L94">            coords.max = userValue;</span>
         }
         else
         {
-<span class="nc" id="L89">            coords.min = (userValue - 1);</span>
-<span class="nc" id="L90">            coords.max = (userValue + 1);</span>
+<span class="nc" id="L98">            coords.min = (userValue - 1);</span>
+<span class="nc" id="L99">            coords.max = (userValue + 1);</span>
         }
-<span class="nc" id="L92">    }</span>
+<span class="nc" id="L101">    }</span>
 
     public int checkSurroundingTiles(int uX, int uY)
     {
-<span class="nc" id="L96">        int count = 0; //Used to count the mines around the tile</span>
+<span class="nc" id="L105">        int count = 0; //Used to count the mines around the tile</span>
 
-<span class="nc" id="L98">        Boundaries x = new Boundaries();</span>
-<span class="nc" id="L99">        Boundaries y = new Boundaries();</span>
+<span class="nc" id="L107">        Boundaries x = new Boundaries();</span>
+<span class="nc" id="L108">        Boundaries y = new Boundaries();</span>
 
-<span class="nc" id="L101">        calculateBounds(uX, x); //Calculate the bounds for the x and y axis</span>
-<span class="nc" id="L102">        calculateBounds(uY, y);</span>
+<span class="nc" id="L110">        calculateBounds(uX, x); //Calculate the bounds for the x and y axis</span>
+<span class="nc" id="L111">        calculateBounds(uY, y);</span>
 
-<span class="nc bnc" id="L104" title="All 2 branches missed.">        for(int row = x.min; row &lt; x.max; row++) // go through a 3x3 grid around the selected tile</span>
+<span class="nc bnc" id="L113" title="All 2 branches missed.">        for(int row = x.min; row &lt; x.max; row++) // go through a 3x3 grid around the selected tile</span>
         {
-<span class="nc bnc" id="L106" title="All 2 branches missed.">            for(int column = y.min; column &lt; y.max; column++)</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">            for(int column = y.min; column &lt; y.max; column++)</span>
             {
-<span class="nc bnc" id="L108" title="All 2 branches missed.">                if(gameBoard.get(row).get(column).getTileType() == 0) //if the tile is a bomb</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                if(gameBoard.get(row).get(column).getTileType() == 0) //if the tile is a bomb</span>
                 {
-<span class="nc" id="L110">                    count++;</span>
+<span class="nc" id="L119">                    count++;</span>
                 }
             }
         }
-<span class="nc" id="L114">        return count;</span>
+<span class="nc" id="L123">        return count;</span>
     }
 
 
 
     public void createBoard() {
-<span class="nc" id="L120">        calculateMines(); //Get the total mines</span>
+<span class="fc" id="L129">        calculateMines(); //Get the total mines</span>
 
         //Salt the mines into the board
 
         //Create a tile based on the inputs from the user
-<span class="nc bnc" id="L125" title="All 2 branches missed.">        for(int row = 0; row &lt; gX; row++)</span>
+<span class="fc bfc" id="L134" title="All 2 branches covered.">        for(int row = 0; row &lt; gX; row++)</span>
         {
-<span class="nc" id="L127">            ArrayList&lt;Tile&gt; temp = new ArrayList&lt;&gt;(); //Create a list to push into the 2D list</span>
-<span class="nc" id="L128">            temp.clear(); //Remove old elements from the array</span>
-<span class="nc bnc" id="L129" title="All 2 branches missed.">            for(int column = 0; column &lt; gY; column++)</span>
+<span class="fc" id="L136">            ArrayList&lt;Tile&gt; temp = new ArrayList&lt;&gt;(); //Create a list to push into the 2D list</span>
+<span class="fc" id="L137">            temp.clear(); //Remove old elements from the array</span>
+<span class="fc bfc" id="L138" title="All 2 branches covered.">            for(int column = 0; column &lt; gY; column++)</span>
             {
-<span class="nc" id="L131">                temp.add(new Clear());</span>
+<span class="fc" id="L140">                temp.add(new Clear());</span>
             }
-<span class="nc" id="L133">            gameBoard.add(row, temp);</span>
+<span class="fc" id="L142">            gameBoard.add(row, temp);</span>
         }
-<span class="nc" id="L135">        addMines();</span>
-<span class="nc" id="L136">    }</span>
+<span class="fc" id="L144">        addMines();</span>
+<span class="fc" id="L145">    }</span>
 
     public void addMines()
     {
-<span class="nc" id="L140">        Math.random();</span>
-<span class="nc" id="L141">        int saltMines = gTotalMines;</span>
-
-<span class="nc bnc" id="L143" title="All 2 branches missed.">        while(saltMines != 0) //While there are still mines to be added to grid</span>
+<span class="fc" id="L149">        Random random = new Random(seed);</span>
+<span class="fc" id="L150">        int saltMines = gTotalMines;</span>
+<span class="fc bfc" id="L151" title="All 2 branches covered.">        while(saltMines != 0) //While there are still mines to be added to grid</span>
         {
-<span class="nc" id="L145">            int random_X = (int)Math.floor(Math.random()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds</span>
-<span class="nc" id="L146">            int random_Y = (int)Math.floor(Math.random()*((gY - 1)-0+1)+0);</span>
 
-<span class="nc bnc" id="L148" title="All 2 branches missed.">            if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object</span>
+<span class="fc" id="L154">            int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds</span>
+<span class="fc" id="L155">            int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);</span>
+
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">            if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object</span>
             {
-<span class="nc bnc" id="L150" title="All 2 branches missed.">                if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">                if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine</span>
                 {
-<span class="nc" id="L152">                    gameBoard.get(random_X).set(random_Y, new Mine()); //Make da mine</span>
-<span class="nc" id="L153">                    saltMines--;</span>
+<span class="fc" id="L161">                    gameBoard.get(random_X).set(random_Y, new Mine()); //Make da mine</span>
+<span class="fc" id="L162">                    saltMines--;</span>
                 }
             }
-<span class="nc" id="L156">        }</span>
-<span class="nc" id="L157">    }</span>
+<span class="fc" id="L165">        }</span>
+<span class="fc" id="L166">    }</span>
 
     public void calculateMines()
     {
-<span class="nc" id="L161">        gTotalMines = gSize / 8;</span>
-<span class="nc" id="L162">    }</span>
+<span class="fc" id="L170">        gTotalMines = gSize / 8;</span>
+<span class="fc" id="L171">    }</span>
 
     @Override
     public String toString() {
 
-<span class="nc" id="L167">        StringBuilder bld = new StringBuilder();</span>
-<span class="nc bnc" id="L168" title="All 2 branches missed.">        for(int row = 0; row &lt; gX; row++)</span>
+<span class="fc" id="L176">        StringBuilder bld = new StringBuilder();</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        for(int row = 0; row &lt; gX; row++)</span>
         {
-<span class="nc bnc" id="L170" title="All 2 branches missed.">            for(int column = 0; column &lt; gY; column++)</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">            for(int column = 0; column &lt; gY; column++)</span>
             {
                 //TODO: check whether the tile is checked and then draw based on that value
-<span class="nc" id="L173">                bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + &quot; &quot;);</span>
+<span class="fc" id="L182">                bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + &quot; &quot;);</span>
             }
-<span class="nc" id="L175">            bld.append(&quot;\n&quot;);</span>
+<span class="fc" id="L184">            bld.append(&quot;\n&quot;);</span>
         }
-<span class="nc" id="L177">        return bld.toString();</span>
+<span class="fc" id="L186">        return bld.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

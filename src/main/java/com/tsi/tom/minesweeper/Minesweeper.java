@@ -24,30 +24,29 @@ public class Minesweeper {
 
         GameState gameState = GameState.running;
         int gamestate = 2;
-
         Scanner input = new Scanner(System.in);
         logger.info("Please choose your difficulty: 1:Easy 2:Medium 3:Hard");
         String userChoice = input.next();
 
         Menu menu = new Menu(Integer.parseInt(userChoice));
         //Create an instance of the game
-        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());
+        Grid game = new Grid(menu.getGridSize(), menu.getGridSize(), (int)(Math.random() * 100));
+
 
 
         while(gameState == GameState.running) //While the game is not over
         {
             logger.info("output \n" + game);
             logger.info("Please select a tile");
+            //User inputs tile
+            int userX = Integer.parseInt(input.next());
+            int userY = Integer.parseInt(input.next());
+            gamestate = game.selectTile(userX, userY);
 
-            userChoice = input.next();
-            if(userChoice.equals("q"))
-            {
-                gamestate = 0;
-            }
-            //TODO:if user input is q then set gamestate to 0
             switch(gamestate)
             {
                 case 0: // QUITING THE GAME
+                    //TODO: figure this out
                     logger.info("Game shutting down");
                     gameState = GameState.quit;
                     break;

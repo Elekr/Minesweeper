@@ -1,18 +1,26 @@
 package com.tsi.tom.minesweeper;
 
-import javax.lang.model.type.NullType;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Grid implements Game{
 
-    public Grid(int gX, int gY) {
+    public Grid(int gX, int gY, int seed) {
         this.gX = gX;
         this.gY = gY;
         this.gSize = gX * gY;
         this.gameBoard = new ArrayList<>();
         this.currentMines = gTotalMines;
         createBoard();
+    }
+
+    public int getgSize() {
+        return gSize;
+    }
+
+    public int getgTotalMines() {
+        return gTotalMines;
     }
 
     ////Variables
@@ -22,16 +30,17 @@ public class Grid implements Game{
     private int gY;
     private int gTotalMines;
     private int currentMines;
+    private int seed;
 
 
     class Boundaries
     {
-        int min = 0;
-        int max = 0;
+        int min;
+        int max;
     }
 
     //The Game board
-    List<ArrayList<Tile>> gameBoard;
+    private final List<ArrayList<Tile>> gameBoard;
 
     ////Methods
     //Check if the tile is within the grid
@@ -137,13 +146,13 @@ public class Grid implements Game{
 
     public void addMines()
     {
-        Math.random();
+        Random random = new Random(seed);
         int saltMines = gTotalMines;
-
         while(saltMines != 0) //While there are still mines to be added to grid
         {
-            int random_X = (int)Math.floor(Math.random()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds
-            int random_Y = (int)Math.floor(Math.random()*((gY - 1)-0+1)+0);
+
+            int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds
+            int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);
 
             if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object
             {
