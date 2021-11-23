@@ -21,6 +21,12 @@ public class Grid implements Game{
     private int gY;
     private int gTotalMines;
 
+    class Boundaries
+    {
+        int min = 0;
+        int max = 0;
+    }
+
     //The Game board
     List<ArrayList<Tile>> gameBoard;
 
@@ -47,8 +53,8 @@ public class Grid implements Game{
         if(isValid(userX, userY)) //If it's a clear tile and it hasn't been checked yet
         {
             gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo
-            //TODO:check all the tiles around the current tile to see if there are any bomb, return the number of bombs
-            //TODO:set the current symbol to the number
+            int bombsSurrounding = checkSurroundingTiles(userX, userY);
+            gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number
         }
         else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine
         {
@@ -57,9 +63,51 @@ public class Grid implements Game{
         return "The game broke"; //error so quit game
     }
 
+    public void calculateBounds(int userValue, Boundaries coords)
+    {
+        if (userValue == 0) //If on the boundary of the grid
+        {
+            coords.min = userValue; //Don't decrease it cuz index
+        }
+        else if (userValue == gX)// if at the upper boundary
+        {
+            coords.max = userValue;
+        }
+        else
+        {
+            coords.min = (userValue - 1);
+            coords.max = (userValue + 1);
+        }
+    }
+
+    public int checkSurroundingTiles(int uX, int uY)
+    {
+        int count = 0; //Used to count the mines around the tile
+
+        Boundaries x = new Boundaries();
+        Boundaries y = new Boundaries();
+
+        calculateBounds(uX, x); //Calculate the bounds for the x and y axis
+        calculateBounds(uY, y);
+
+        for(int row = x.min; row < x.max; row++) // go through a 3x3 grid around the selected tile
+        {
+            for(int column = y.min; column < y.max; column++)
+            {
+                if(gameBoard.get(row).get(column).getTileType() == 0) //if the tile is a bomb
+                {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+
+
+
     public void createBoard() {
         calculateMines(); //Get the total mines
-
 
         //Salt the mines into the board
 
