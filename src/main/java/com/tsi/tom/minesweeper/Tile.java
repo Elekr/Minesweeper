@@ -1,6 +1,6 @@
 package com.tsi.tom.minesweeper;
 
-public class Tile {
+public abstract class Tile {
     //Constructor
     public Tile() {
         this.tileChecked = false;

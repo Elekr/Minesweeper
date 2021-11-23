@@ -43,11 +43,8 @@ public class Grid implements Game{
     }
 
     public void createBoard() {
-        //Random function
-        //Check if the tile
-        int randomValue = 0;
-        int bombThreshold = 0;
         calculateMines(); //Get the total mines
+
 
         //Salt the mines into the board
 
@@ -58,35 +55,29 @@ public class Grid implements Game{
             temp.clear(); //Remove old elements from the array
             for(int column = 0; column < gY; column++)
             {
-                //if the tType of the tile is 0 then it's a bomb, else it's clear (1)
-                if(randomValue < bombThreshold)
-                {
-                    temp.add(new Clear());
-                }
-                else
-                {
-                    temp.add(new Mine());
-                }
+                temp.add(new Clear());
             }
             gameBoard.add(row, temp);
         }
+        addMines();
     }
 
-    public void addMines() //TODO: do this before we create the board?
+    public void addMines()
     {
         Math.random();
         int saltMines = gTotalMines;
 
         while(saltMines != 0) //While there are still mines to be added to grid
         {
-            int random_X = (int)Math.floor(Math.random()*(gX-0+1)+0); //Generate a random number within the grid bounds
-            int random_Y = (int)Math.floor(Math.random()*(gY-0+1)+0);
+            int random_X = (int)Math.floor(Math.random()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds
+            int random_Y = (int)Math.floor(Math.random()*((gY - 1)-0+1)+0);
 
             if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object
             {
                 if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine
                 {
-                    gameBoard.get(random_X).add(new Mine()); //Make da mine
+                    gameBoard.get(random_X).set(random_Y, new Mine()); //Make da mine
+                    saltMines--;
                 }
             }
         }
