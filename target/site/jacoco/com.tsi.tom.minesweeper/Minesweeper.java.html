@@ -7,23 +7,39 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L8">    private static final  Logger logger = Logger.getLogger(Minesweeper.class.getName());</span>
 
+<span class="nc" id="L10">    public enum GameState</span>
+    {
+<span class="nc" id="L12">        success,</span>
+<span class="nc" id="L13">        running,</span>
+<span class="nc" id="L14">        invalid,</span>
+<span class="nc" id="L15">        gameover,</span>
+<span class="nc" id="L16">        quit</span>
+    }
+
     public static void main(String[] args){
 
-<span class="nc" id="L12">        Scanner input = new Scanner(System.in);</span>
-<span class="nc" id="L13">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
-<span class="nc" id="L14">        int userChoice = input.nextInt();</span>
-<span class="nc" id="L15">        Menu menu = new Menu(userChoice);</span>
+<span class="nc" id="L21">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L22">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
+<span class="nc" id="L23">        int userChoice = input.nextInt();</span>
+
+<span class="nc" id="L25">        Menu menu = new Menu(userChoice);</span>
         //Create an instance of the game
-<span class="nc" id="L17">        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());</span>
+<span class="nc" id="L27">        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());</span>
+<span class="nc" id="L28">        GameState gameState = GameState.running;</span>
+
+<span class="nc bnc" id="L30" title="All 4 branches missed.">        while(gameState != gameState.gameover || gameState != gameState) //While the game is not over</span>
+        {
+<span class="nc" id="L32">            logger.info(&quot;output \n&quot; + game);</span>
+        }
 
 
 
         //Display the current state of the game
-<span class="nc" id="L22">        logger.info(&quot;output \n&quot; + game );</span>
+
         //Player interaction (Choosing a tile)
 
 
-<span class="nc" id="L26">    }</span>
+<span class="nc" id="L42">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
