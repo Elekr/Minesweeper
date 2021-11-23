@@ -15,11 +15,6 @@ public class Minesweeper {
         quit
     }
 
-    public static void clearScreen() {
-        System.out.print("\033[H\033[2J");
-        System.out.flush();
-    }
-
     public static void main(String[] args){
 
         GameState gameState = GameState.running;
@@ -32,8 +27,6 @@ public class Minesweeper {
         //Create an instance of the game
         Grid game = new Grid(menu.getGridSize(), menu.getGridSize(), (int)(Math.random() * 100));
 
-
-
         while(gameState == GameState.running) //While the game is not over
         {
             logger.info("output \n" + game);
@@ -41,6 +34,7 @@ public class Minesweeper {
             //User inputs tile
             int userX = Integer.parseInt(input.next());
             int userY = Integer.parseInt(input.next());
+
             gamestate = game.selectTile(userX, userY);
 
             switch(gamestate)
@@ -56,11 +50,9 @@ public class Minesweeper {
                     break;
                 case 2: // INVALID CHOICE
                     logger.info("Invalid choice, please select another tile");
-                    clearScreen();
                     break;
                 case 3:
                     logger.info("Clear space!");
-                    clearScreen();
                     break;
                 case 4:
                     logger.info("you won the game!");
@@ -68,9 +60,6 @@ public class Minesweeper {
                 default:
                     logger.info("how did you get here what");
             }
-
         }
-
     }
-
 }

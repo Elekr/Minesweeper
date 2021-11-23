@@ -48,4 +48,9 @@ public class Menu {
                 logger.info("Please choose an appropriate selection");
         }
     }
+
+    public void startGame()
+    {
+
+    }
 }
