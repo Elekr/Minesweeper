@@ -7,39 +7,72 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L8">    private static final  Logger logger = Logger.getLogger(Minesweeper.class.getName());</span>
 
-<span class="nc" id="L10">    public enum GameState</span>
+<span class="nc" id="L10">    enum GameState</span>
     {
 <span class="nc" id="L12">        success,</span>
 <span class="nc" id="L13">        running,</span>
-<span class="nc" id="L14">        invalid,</span>
-<span class="nc" id="L15">        gameover,</span>
-<span class="nc" id="L16">        quit</span>
+<span class="nc" id="L14">        gameover,</span>
+<span class="nc" id="L15">        quit;</span>
     }
+
+    public static void clearScreen() {
+<span class="nc" id="L19">        System.out.print(&quot;\033[H\033[2J&quot;);</span>
+<span class="nc" id="L20">        System.out.flush();</span>
+<span class="nc" id="L21">    }</span>
 
     public static void main(String[] args){
 
-<span class="nc" id="L21">        Scanner input = new Scanner(System.in);</span>
-<span class="nc" id="L22">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
-<span class="nc" id="L23">        int userChoice = input.nextInt();</span>
+<span class="nc" id="L25">        GameState gameState = GameState.running;</span>
+<span class="nc" id="L26">        int gamestate = 2;</span>
 
-<span class="nc" id="L25">        Menu menu = new Menu(userChoice);</span>
+<span class="nc" id="L28">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L29">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
+<span class="nc" id="L30">        String userChoice = input.next();</span>
+
+<span class="nc" id="L32">        Menu menu = new Menu(Integer.parseInt(userChoice));</span>
         //Create an instance of the game
-<span class="nc" id="L27">        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());</span>
-<span class="nc" id="L28">        GameState gameState = GameState.running;</span>
+<span class="nc" id="L34">        Grid game = new Grid(menu.getGridSize(), menu.getGridSize());</span>
 
-<span class="nc bnc" id="L30" title="All 4 branches missed.">        while(gameState != gameState.gameover || gameState != gameState) //While the game is not over</span>
+
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        while(gameState == GameState.running) //While the game is not over</span>
         {
-<span class="nc" id="L32">            logger.info(&quot;output \n&quot; + game);</span>
+<span class="nc" id="L39">            logger.info(&quot;output \n&quot; + game);</span>
+<span class="nc" id="L40">            logger.info(&quot;Please select a tile&quot;);</span>
+
+<span class="nc" id="L42">            userChoice = input.next();</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">            if(userChoice == &quot;q&quot;)</span>
+            {
+<span class="nc" id="L45">                gamestate = 0;</span>
+            }
+            //TODO:if user input is q then set gamestate to 0
+<span class="nc bnc" id="L48" title="All 6 branches missed.">            switch(gamestate)</span>
+            {
+                case 0: // QUITING THE GAME
+<span class="nc" id="L51">                    logger.info(&quot;Game shutting down&quot;);</span>
+<span class="nc" id="L52">                    gameState = GameState.quit;</span>
+<span class="nc" id="L53">                    break;</span>
+                case 1: // GAME OVER
+<span class="nc" id="L55">                    logger.info(&quot;uh oh, you hit a mine :)&quot;);</span>
+<span class="nc" id="L56">                    gameState = GameState.gameover;</span>
+<span class="nc" id="L57">                    break;</span>
+                case 2: // INVALID CHOICE
+<span class="nc" id="L59">                    logger.info(&quot;Invalid choice, please select another tile&quot;);</span>
+<span class="nc" id="L60">                    clearScreen();</span>
+<span class="nc" id="L61">                    break;</span>
+                case 3:
+<span class="nc" id="L63">                    logger.info(&quot;Clear space!&quot;);</span>
+<span class="nc" id="L64">                    clearScreen();</span>
+<span class="nc" id="L65">                    break;</span>
+                case 4:
+<span class="nc" id="L67">                    logger.info(&quot;you won the game!&quot;);</span>
+<span class="nc" id="L68">                    gameState = GameState.success;</span>
+                default:
+<span class="nc" id="L70">                    logger.info(&quot;how did you get here what&quot;);</span>
+            }
+
         }
 
-
-
-        //Display the current state of the game
-
-        //Player interaction (Choosing a tile)
-
-
-<span class="nc" id="L42">    }</span>
+<span class="nc" id="L75">    }</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

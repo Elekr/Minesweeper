@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class MenuTest {
 
-    private static final Logger logger = Logger.getLogger(Menu.class.getName());
+    private static final Logger logger = Logger.getLogger(MenuTest.class.getName());
 
     @Test
     public void testMenuValues()

@@ -11,6 +11,7 @@ public class Grid implements Game{
         this.gY = gY;
         this.gSize = gX * gY;
         this.gameBoard = new ArrayList<>();
+        this.currentMines = gTotalMines;
         createBoard();
     }
 
@@ -20,6 +21,7 @@ public class Grid implements Game{
     private int gX;
     private int gY;
     private int gTotalMines;
+    private int currentMines;
 
 
     class Boundaries
@@ -34,9 +36,9 @@ public class Grid implements Game{
     ////Methods
     //Check if the tile is within the grid
 
-    public boolean isValid(int uX, int uY)
+    public boolean isValid(int uX, int uY, int type)
     {
-        if(gameBoard.get(uX).get(uY).getTileType() == 1 && !gameBoard.get(uX).get(uY).isTileChecked())
+        if(gameBoard.get(uX).get(uY).getTileType() == type && !gameBoard.get(uX).get(uY).isTileChecked())
         {
             return true;
         }
@@ -51,20 +53,25 @@ public class Grid implements Game{
     {
         //TODO:Validate user input but in the main
         //If the tile the user has selected is a clear tile
-        if(isValid(userX, userY)) //If it's a clear tile and it hasn't been checked yet
+        if(isValid(userX, userY, 1)) //If it's a clear tile and it hasn't been checked yet
         {
             gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo
             int bombsSurrounding = checkSurroundingTiles(userX, userY);
             gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number
-            return 1;
+            return 3; // Keep running
         }
         else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine
         {
-            return 0; // end the game
+            return 1; // Game over state
         }
-
-        //TODO: tell the user if it's a tile thats already been checked
-        return 0; //error so quit game
+        else if (currentMines == 0)
+        {
+            return 4; // Success!
+        }
+        else
+        {
+            return 2; // Invalid choice
+        }
     }
 
     public void calculateBounds(int userValue, Boundaries coords)
@@ -104,7 +111,6 @@ public class Grid implements Game{
                 }
             }
         }
-
         return count;
     }
 
@@ -163,6 +169,7 @@ public class Grid implements Game{
         {
             for(int column = 0; column < gY; column++)
             {
+                //TODO: check whether the tile is checked and then draw based on that value
                 bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + " ");
             }
             bld.append("\n");

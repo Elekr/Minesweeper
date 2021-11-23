@@ -2,41 +2,39 @@
 
 public abstract class Tile {
     //Constructor
-<span class="nc" id="L5">    public Tile() {</span>
-<span class="nc" id="L6">        this.tileChecked = false;</span>
-<span class="nc" id="L7">        this.currentSymbol = '#';</span>
-<span class="nc" id="L8">    }</span>
+<span class="fc" id="L5">    public Tile() {</span>
+<span class="fc" id="L6">        this.tileChecked = false;</span>
+<span class="fc" id="L7">        this.currentSymbol = ' ';</span>
+<span class="fc" id="L8">    }</span>
 
     //Methods
     public int getTileType() {
-<span class="nc" id="L12">        return tileType;</span>
+<span class="fc" id="L12">        return tileType;</span>
     }
 
     public void setTileType(int tileType) {
-<span class="nc" id="L16">        this.tileType = tileType;</span>
-<span class="nc" id="L17">    }</span>
+<span class="fc" id="L16">        this.tileType = tileType;</span>
+<span class="fc" id="L17">    }</span>
 
     public boolean isTileChecked() {
-<span class="nc" id="L20">        return tileChecked;</span>
+<span class="fc" id="L20">        return tileChecked;</span>
     }
 
     public void setTileChecked(boolean tileChecked) {
-<span class="nc" id="L24">        this.tileChecked = tileChecked;</span>
-<span class="nc" id="L25">    }</span>
+<span class="fc" id="L24">        this.tileChecked = tileChecked;</span>
+<span class="fc" id="L25">    }</span>
 
     public char getCurrentSymbol() {
-<span class="nc" id="L28">        return currentSymbol;</span>
+<span class="fc" id="L28">        return currentSymbol;</span>
     }
 
     public void setCurrentSymbol(char currentSymbol) {
-<span class="nc" id="L32">        this.currentSymbol = currentSymbol;</span>
-<span class="nc" id="L33">    }</span>
+<span class="fc" id="L32">        this.currentSymbol = currentSymbol;</span>
+<span class="fc" id="L33">    }</span>
 
     //Variables
     private char currentSymbol;
     protected int tileType;
     private boolean tileChecked;
-
-
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

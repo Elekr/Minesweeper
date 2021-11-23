@@ -4,7 +4,7 @@ public abstract class Tile {
     //Constructor
     public Tile() {
         this.tileChecked = false;
-        this.currentSymbol = '#';
+        this.currentSymbol = ' ';
     }
 
     //Methods
@@ -36,6 +36,4 @@ public abstract class Tile {
     private char currentSymbol;
     protected int tileType;
     private boolean tileChecked;
-
-
 }
