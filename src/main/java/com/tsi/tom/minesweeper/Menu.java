@@ -16,12 +16,8 @@ public class Menu {
         return gridSize;
     }
 
-    public int getTotalMines() {
-        return totalMines;
-    }
 
     int gridSize;
-    int totalMines;
     String gameDifficulty;
 
     public Menu(int input) {
@@ -36,17 +32,14 @@ public class Menu {
         {
             case 1:
                 gridSize = 8;
-                totalMines = 10;
                 gameDifficulty = "Easy";
                 break;
             case 2:
                 gridSize = 16;
-                totalMines = 20;
                 gameDifficulty = "Medium";
                 break;
             case 3:
                 gridSize = 20;
-                totalMines = 30;
                 gameDifficulty = "Hard";
                 break;
             default:

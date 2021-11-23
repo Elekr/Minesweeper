@@ -16,43 +16,36 @@ public class Menu {
 <span class="fc" id="L16">        return gridSize;</span>
     }
 
-    public int getTotalMines() {
-<span class="nc" id="L20">        return totalMines;</span>
-    }
 
     int gridSize;
-    int totalMines;
     String gameDifficulty;
 
-<span class="fc" id="L27">    public Menu(int input) {</span>
-<span class="fc" id="L28">        InitSize(input);</span>
-<span class="fc" id="L29">    }</span>
+<span class="fc" id="L23">    public Menu(int input) {</span>
+<span class="fc" id="L24">        InitSize(input);</span>
+<span class="fc" id="L25">    }</span>
 
     public String InitSize(int userInput)
     {
         //Ask user for grid size input
 
-<span class="pc bpc" id="L35" title="3 of 4 branches missed.">        switch(userInput)</span>
+<span class="pc bpc" id="L31" title="2 of 4 branches missed.">        switch(userInput)</span>
         {
             case 1:
-<span class="fc" id="L38">                gridSize = 8;</span>
-<span class="fc" id="L39">                totalMines = 10;</span>
-<span class="fc" id="L40">                gameDifficulty = &quot;Easy&quot;;</span>
-<span class="fc" id="L41">                break;</span>
+<span class="fc" id="L34">                gridSize = 8;</span>
+<span class="fc" id="L35">                gameDifficulty = &quot;Easy&quot;;</span>
+<span class="fc" id="L36">                break;</span>
             case 2:
-<span class="nc" id="L43">                gridSize = 16;</span>
-<span class="nc" id="L44">                totalMines = 20;</span>
-<span class="nc" id="L45">                gameDifficulty = &quot;Medium&quot;;</span>
-<span class="nc" id="L46">                break;</span>
+<span class="fc" id="L38">                gridSize = 16;</span>
+<span class="fc" id="L39">                gameDifficulty = &quot;Medium&quot;;</span>
+<span class="fc" id="L40">                break;</span>
             case 3:
-<span class="nc" id="L48">                gridSize = 20;</span>
-<span class="nc" id="L49">                totalMines = 30;</span>
-<span class="nc" id="L50">                gameDifficulty = &quot;Hard&quot;;</span>
-<span class="nc" id="L51">                break;</span>
+<span class="nc" id="L42">                gridSize = 20;</span>
+<span class="nc" id="L43">                gameDifficulty = &quot;Hard&quot;;</span>
+<span class="nc" id="L44">                break;</span>
             default:
-<span class="nc" id="L53">                logger.info(&quot;Please choose an appropriate selection&quot;);</span>
+<span class="nc" id="L46">                logger.info(&quot;Please choose an appropriate selection&quot;);</span>
         }
-<span class="fc" id="L55">        return &quot;&quot;;</span>
+<span class="fc" id="L48">        return &quot;&quot;;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

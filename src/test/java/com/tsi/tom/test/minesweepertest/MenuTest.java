@@ -14,20 +14,26 @@ public class MenuTest {
     @Test
     public void testMenuValues()
     {
-        Menu menu = new Menu(1);
+        Menu menu;
 
-        switch(menu.toString())
+        for(int i = 1; i < 3; i++)
         {
-            case "Easy":
-                assertEquals(menu.getGridSize(), 8, "grid size not set correctly");
-                break;
-            case "Medium":
-                assertEquals(menu.getGridSize(), 16, "grid size not set correctly");
-                break;
-            case "Hard":
-                assertEquals(menu.getGridSize(), 20, "grid size not set correctly");
-                break;
-            default:
+            menu = new Menu(i);
+            switch(menu.toString())
+            {
+                case "Easy":
+                    assertEquals(menu.getGridSize(), 8, "grid size not set correctly");
+                    break;
+                case "Medium":
+                    assertEquals(menu.getGridSize(), 16, "grid size not set correctly");
+                    break;
+                case "Hard":
+                    assertEquals(menu.getGridSize(), 20, "grid size not set correctly");
+                    break;
+                default:
+            }
         }
+
+
     }
 }
