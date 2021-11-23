@@ -21,6 +21,7 @@ public class Grid implements Game{
     private int gY;
     private int gTotalMines;
 
+
     class Boundaries
     {
         int min = 0;
@@ -46,7 +47,7 @@ public class Grid implements Game{
     }
 
     //Checks if the user tile is a Mine or a Clear
-    public String selectTile(int userX, int userY)
+    public int selectTile(int userX, int userY)
     {
         //TODO:Validate user input but in the main
         //If the tile the user has selected is a clear tile
@@ -55,12 +56,15 @@ public class Grid implements Game{
             gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo
             int bombsSurrounding = checkSurroundingTiles(userX, userY);
             gameBoard.get(userX).get(userY).setCurrentSymbol((char)bombsSurrounding); //set the tile to be the number
+            return 1;
         }
         else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine
         {
-            return "Game Over"; // end the game
+            return 0; // end the game
         }
-        return "The game broke"; //error so quit game
+
+        //TODO: tell the user if it's a tile thats already been checked
+        return 0; //error so quit game
     }
 
     public void calculateBounds(int userValue, Boundaries coords)
