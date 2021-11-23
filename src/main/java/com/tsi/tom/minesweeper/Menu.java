@@ -55,7 +55,7 @@ public class Menu {
         }
     }
 
-    public Minesweeper.GameState startGame(int x, int y, Minesweeper.GameState currentState)
+    public Minesweeper.GameState gameLoop(int x, int y, Minesweeper.GameState currentState)
     {
         gamestate = game.selectTile(x, y);
 

@@ -36,7 +36,5 @@ public class MenuTest {
                 default:
             }
         }
-
-
     }
 }
