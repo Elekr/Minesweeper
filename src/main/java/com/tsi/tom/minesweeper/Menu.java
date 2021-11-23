@@ -20,12 +20,18 @@ public class Menu {
         return gameDifficulty;
     }
 
+
     private int gridSize;
-
     private String gameDifficulty;
+    int gamestate = 2;
 
-    public Menu(int input) {
+    //Create an instance of the game
+    Grid game;
+
+    public Menu(int input)
+    {
         InitSize(input);
+        game = new Grid(gridSize, gridSize, (int)(Math.random() * 100));
     }
 
     public void InitSize(int userInput)
@@ -49,8 +55,40 @@ public class Menu {
         }
     }
 
-    public void startGame()
+    public Minesweeper.GameState startGame(int x, int y, Minesweeper.GameState currentState)
     {
+        gamestate = game.selectTile(x, y);
 
+        switch(gamestate)
+        {
+            case 0: // QUITING THE GAME
+                //TODO: figure this out
+                logger.info("Game shutting down");
+                currentState = Minesweeper.GameState.quit;
+                break;
+            case 1: // GAME OVER
+                logger.info("uh oh, you hit a mine :)");
+                currentState = Minesweeper.GameState.gameover;
+                break;
+            case 2: // INVALID CHOICE
+                logger.info("Invalid choice, please select another tile");
+                break;
+            case 3:
+                logger.info("Clear space!");
+                break;
+            case 4:
+                logger.info("you won the game!");
+                currentState = Minesweeper.GameState.success;
+            default:
+                logger.info("how did you get here what");
+        }
+        return currentState;
     }
+
+    public void displayboard()
+    {
+        logger.info("\n" + game);
+        logger.info("Please select a tile");
+    }
+
 }

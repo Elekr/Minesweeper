@@ -12,6 +12,7 @@ public class Grid implements Game{
         this.gSize = gX * gY;
         this.gameBoard = new ArrayList<>();
         this.currentMines = gTotalMines;
+        this.seed = seed;
         createBoard();
     }
 
@@ -150,7 +151,7 @@ public class Grid implements Game{
         int saltMines = gTotalMines;
         while(saltMines != 0) //While there are still mines to be added to grid
         {
-
+            Math.random();
             int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds
             int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);
 

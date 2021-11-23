@@ -17,50 +17,26 @@ import java.util.logging.Logger;
 
     public static void main(String[] args){
 
-<span class="nc" id="L20">        GameState gameState = GameState.running;</span>
-<span class="nc" id="L21">        int gamestate = 2;</span>
+        //Setup
+<span class="nc" id="L21">        GameState gameState = GameState.running;</span>
 <span class="nc" id="L22">        Scanner input = new Scanner(System.in);</span>
-<span class="nc" id="L23">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
-<span class="nc" id="L24">        String userChoice = input.next();</span>
+<span class="nc" id="L23">        String userChoice = input.next();</span>
 
+        //Initialise
 <span class="nc" id="L26">        Menu menu = new Menu(Integer.parseInt(userChoice));</span>
-        //Create an instance of the game
-<span class="nc" id="L28">        Grid game = new Grid(menu.getGridSize(), menu.getGridSize(), (int)(Math.random() * 100));</span>
+<span class="nc" id="L27">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
 
+        //Game loop
 <span class="nc bnc" id="L30" title="All 2 branches missed.">        while(gameState == GameState.running) //While the game is not over</span>
         {
-<span class="nc" id="L32">            logger.info(&quot;output \n&quot; + game);</span>
-<span class="nc" id="L33">            logger.info(&quot;Please select a tile&quot;);</span>
+<span class="nc" id="L32">            menu.displayboard();</span>
             //User inputs tile
+<span class="nc" id="L34">            logger.info(&quot;Enter X coord&quot;);</span>
 <span class="nc" id="L35">            int userX = Integer.parseInt(input.next());</span>
-<span class="nc" id="L36">            int userY = Integer.parseInt(input.next());</span>
-
-<span class="nc" id="L38">            gamestate = game.selectTile(userX, userY);</span>
-
-<span class="nc bnc" id="L40" title="All 6 branches missed.">            switch(gamestate)</span>
-            {
-                case 0: // QUITING THE GAME
-                    //TODO: figure this out
-<span class="nc" id="L44">                    logger.info(&quot;Game shutting down&quot;);</span>
-<span class="nc" id="L45">                    gameState = GameState.quit;</span>
-<span class="nc" id="L46">                    break;</span>
-                case 1: // GAME OVER
-<span class="nc" id="L48">                    logger.info(&quot;uh oh, you hit a mine :)&quot;);</span>
-<span class="nc" id="L49">                    gameState = GameState.gameover;</span>
-<span class="nc" id="L50">                    break;</span>
-                case 2: // INVALID CHOICE
-<span class="nc" id="L52">                    logger.info(&quot;Invalid choice, please select another tile&quot;);</span>
-<span class="nc" id="L53">                    break;</span>
-                case 3:
-<span class="nc" id="L55">                    logger.info(&quot;Clear space!&quot;);</span>
-<span class="nc" id="L56">                    break;</span>
-                case 4:
-<span class="nc" id="L58">                    logger.info(&quot;you won the game!&quot;);</span>
-<span class="nc" id="L59">                    gameState = GameState.success;</span>
-                default:
-<span class="nc" id="L61">                    logger.info(&quot;how did you get here what&quot;);</span>
-            }
-<span class="nc" id="L63">        }</span>
-<span class="nc" id="L64">    }</span>
+<span class="nc" id="L36">            logger.info(&quot;Enter Y coord&quot;);</span>
+<span class="nc" id="L37">            int userY = Integer.parseInt(input.next());</span>
+<span class="nc" id="L38">            gameState = menu.startGame(userX, userY, gameState);</span>
+<span class="nc" id="L39">        }</span>
+<span class="nc" id="L40">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

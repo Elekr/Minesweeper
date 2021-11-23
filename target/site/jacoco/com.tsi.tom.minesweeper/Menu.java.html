@@ -20,38 +20,76 @@ public class Menu {
 <span class="fc" id="L20">        return gameDifficulty;</span>
     }
 
+
     private int gridSize;
-
     private String gameDifficulty;
+<span class="fc" id="L26">    int gamestate = 2;</span>
 
-<span class="fc" id="L27">    public Menu(int input) {</span>
-<span class="fc" id="L28">        InitSize(input);</span>
-<span class="fc" id="L29">    }</span>
+    //Create an instance of the game
+    Grid game;
+
+    public Menu(int input)
+<span class="fc" id="L32">    {</span>
+<span class="fc" id="L33">        InitSize(input);</span>
+<span class="fc" id="L34">        game = new Grid(gridSize, gridSize, (int)(Math.random() * 100));</span>
+<span class="fc" id="L35">    }</span>
 
     public void InitSize(int userInput)
     {
-<span class="pc bpc" id="L33" title="1 of 4 branches missed.">        switch(userInput)</span>
+<span class="pc bpc" id="L39" title="1 of 4 branches missed.">        switch(userInput)</span>
         {
             case 1:
-<span class="fc" id="L36">                gridSize = 8;</span>
-<span class="fc" id="L37">                gameDifficulty = &quot;Easy&quot;;</span>
-<span class="fc" id="L38">                break;</span>
+<span class="fc" id="L42">                gridSize = 8;</span>
+<span class="fc" id="L43">                gameDifficulty = &quot;Easy&quot;;</span>
+<span class="fc" id="L44">                break;</span>
             case 2:
-<span class="fc" id="L40">                gridSize = 16;</span>
-<span class="fc" id="L41">                gameDifficulty = &quot;Medium&quot;;</span>
-<span class="fc" id="L42">                break;</span>
+<span class="fc" id="L46">                gridSize = 16;</span>
+<span class="fc" id="L47">                gameDifficulty = &quot;Medium&quot;;</span>
+<span class="fc" id="L48">                break;</span>
             case 3:
-<span class="fc" id="L44">                gridSize = 20;</span>
-<span class="fc" id="L45">                gameDifficulty = &quot;Hard&quot;;</span>
-<span class="fc" id="L46">                break;</span>
+<span class="fc" id="L50">                gridSize = 20;</span>
+<span class="fc" id="L51">                gameDifficulty = &quot;Hard&quot;;</span>
+<span class="fc" id="L52">                break;</span>
             default:
-<span class="nc" id="L48">                logger.info(&quot;Please choose an appropriate selection&quot;);</span>
+<span class="nc" id="L54">                logger.info(&quot;Please choose an appropriate selection&quot;);</span>
         }
-<span class="fc" id="L50">    }</span>
+<span class="fc" id="L56">    }</span>
 
-    public void startGame()
+    public Minesweeper.GameState startGame(int x, int y, Minesweeper.GameState currentState)
     {
+<span class="nc" id="L60">        gamestate = game.selectTile(x, y);</span>
 
-<span class="nc" id="L55">    }</span>
+<span class="nc bnc" id="L62" title="All 6 branches missed.">        switch(gamestate)</span>
+        {
+            case 0: // QUITING THE GAME
+                //TODO: figure this out
+<span class="nc" id="L66">                logger.info(&quot;Game shutting down&quot;);</span>
+<span class="nc" id="L67">                currentState = Minesweeper.GameState.quit;</span>
+<span class="nc" id="L68">                break;</span>
+            case 1: // GAME OVER
+<span class="nc" id="L70">                logger.info(&quot;uh oh, you hit a mine :)&quot;);</span>
+<span class="nc" id="L71">                currentState = Minesweeper.GameState.gameover;</span>
+<span class="nc" id="L72">                break;</span>
+            case 2: // INVALID CHOICE
+<span class="nc" id="L74">                logger.info(&quot;Invalid choice, please select another tile&quot;);</span>
+<span class="nc" id="L75">                break;</span>
+            case 3:
+<span class="nc" id="L77">                logger.info(&quot;Clear space!&quot;);</span>
+<span class="nc" id="L78">                break;</span>
+            case 4:
+<span class="nc" id="L80">                logger.info(&quot;you won the game!&quot;);</span>
+<span class="nc" id="L81">                currentState = Minesweeper.GameState.success;</span>
+            default:
+<span class="nc" id="L83">                logger.info(&quot;how did you get here what&quot;);</span>
+        }
+<span class="nc" id="L85">        return currentState;</span>
+    }
+
+    public void displayboard()
+    {
+<span class="nc" id="L90">        logger.info(&quot;\n&quot; + game);</span>
+<span class="nc" id="L91">        logger.info(&quot;Please select a tile&quot;);</span>
+<span class="nc" id="L92">    }</span>
+
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>
