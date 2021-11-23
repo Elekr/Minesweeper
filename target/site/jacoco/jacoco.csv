@@ -2,7 +2,7 @@ GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_
 MineSweeper,com.tsi.tom.minesweeper,Clear,0,9,0,0,0,4,0,1,0,1
 MineSweeper,com.tsi.tom.minesweeper,Grid.Boundaries,12,0,0,0,3,0,1,0,1,0
 MineSweeper,com.tsi.tom.minesweeper,Menu,3,44,1,3,1,18,1,8,0,6
-MineSweeper,com.tsi.tom.minesweeper,Minesweeper,97,0,10,0,35,0,11,0,4,0
+MineSweeper,com.tsi.tom.minesweeper,Minesweeper,96,0,10,0,35,0,11,0,4,0
 MineSweeper,com.tsi.tom.minesweeper,Minesweeper.GameState,27,0,0,0,5,0,1,0,1,0
 MineSweeper,com.tsi.tom.minesweeper,Mine,0,9,0,0,0,4,0,1,0,1
 MineSweeper,com.tsi.tom.minesweeper,Grid,335,0,34,0,66,0,26,0,9,0

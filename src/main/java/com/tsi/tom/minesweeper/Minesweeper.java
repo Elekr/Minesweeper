@@ -40,7 +40,7 @@ public class Minesweeper {
             logger.info("Please select a tile");
 
             userChoice = input.next();
-            if(userChoice.equals('q'))
+            if(userChoice.equals("q"))
             {
                 gamestate = 0;
             }
