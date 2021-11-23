@@ -30,10 +30,4 @@ public class MenuTest {
             default:
         }
     }
-
-    @Test
-    public void testJacoco()
-    {
-        assertEquals(1, 1, "testing");
-    }
 }

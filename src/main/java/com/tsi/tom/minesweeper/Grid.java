@@ -26,20 +26,35 @@ public class Grid implements Game{
 
     ////Methods
     //Check if the tile is within the grid
-    public boolean isValid(){
-        return true;
+
+    public boolean isValid(int uX, int uY)
+    {
+        if(gameBoard.get(uX).get(uY).getTileType() == 1 && !gameBoard.get(uX).get(uY).isTileChecked())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     //Checks if the user tile is a Mine or a Clear
-    public int selectTile(int userX, int userY)
+    public String selectTile(int userX, int userY)
     {
+        //TODO:Validate user input but in the main
         //If the tile the user has selected is a clear tile
-        if(gameBoard.get(userX).get(userY).getTileType() == 1)
+        if(isValid(userX, userY)) //If it's a clear tile and it hasn't been checked yet
         {
-            gameBoard.get(userX).get(userY).setTileChecked(true);
-
+            gameBoard.get(userX).get(userY).setTileChecked(true); //it's been checked yo
+            //TODO:check all the tiles around the current tile to see if there are any bomb, return the number of bombs
+            //TODO:set the current symbol to the number
         }
-        return 0;
+        else if (gameBoard.get(userX).get(userY).getTileType() == 0) //If it's a mine
+        {
+            return "Game Over"; // end the game
+        }
+        return "The game broke"; //error so quit game
     }
 
     public void createBoard() {
