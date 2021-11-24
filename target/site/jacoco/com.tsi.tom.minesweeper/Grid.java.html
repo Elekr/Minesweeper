@@ -147,44 +147,43 @@ public class Grid implements Game{
 
     public void addMines()
     {
-<span class="fc" id="L150">        Random random = new Random(seed);</span>
+<span class="fc" id="L150">        Random random = new Random(seed); ///hell yeah, competitive minesweeper</span>
 <span class="fc" id="L151">        int saltMines = gTotalMines;</span>
 <span class="fc bfc" id="L152" title="All 2 branches covered.">        while(saltMines != 0) //While there are still mines to be added to grid</span>
         {
-<span class="fc" id="L154">            Math.random();</span>
-<span class="fc" id="L155">            int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds</span>
-<span class="fc" id="L156">            int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);</span>
+<span class="fc" id="L154">            int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds</span>
+<span class="fc" id="L155">            int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);</span>
 
-<span class="pc bpc" id="L158" title="1 of 2 branches missed.">            if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object</span>
+<span class="pc bpc" id="L157" title="1 of 2 branches missed.">            if(gameBoard.get(random_X).get(random_Y) != null) // if there is an object</span>
             {
-<span class="fc bfc" id="L160" title="All 2 branches covered.">                if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine</span>
+<span class="fc bfc" id="L159" title="All 2 branches covered.">                if(gameBoard.get(random_X).get(random_Y).getTileType() != 0) // if the tile is not already a mine</span>
                 {
-<span class="fc" id="L162">                    gameBoard.get(random_X).set(random_Y, new Mine()); //Make da mine</span>
-<span class="fc" id="L163">                    saltMines--;</span>
+<span class="fc" id="L161">                    gameBoard.get(random_X).set(random_Y, new Mine()); //Make da mine</span>
+<span class="fc" id="L162">                    saltMines--;</span>
                 }
             }
-<span class="fc" id="L166">        }</span>
-<span class="fc" id="L167">    }</span>
+<span class="fc" id="L165">        }</span>
+<span class="fc" id="L166">    }</span>
 
     public void calculateMines()
     {
-<span class="fc" id="L171">        gTotalMines = gSize / 8;</span>
-<span class="fc" id="L172">    }</span>
+<span class="fc" id="L170">        gTotalMines = gSize / 8;</span>
+<span class="fc" id="L171">    }</span>
 
     @Override
     public String toString() {
 
-<span class="fc" id="L177">        StringBuilder bld = new StringBuilder();</span>
-<span class="fc bfc" id="L178" title="All 2 branches covered.">        for(int row = 0; row &lt; gX; row++)</span>
+<span class="fc" id="L176">        StringBuilder bld = new StringBuilder();</span>
+<span class="fc bfc" id="L177" title="All 2 branches covered.">        for(int row = 0; row &lt; gX; row++)</span>
         {
-<span class="fc bfc" id="L180" title="All 2 branches covered.">            for(int column = 0; column &lt; gY; column++)</span>
+<span class="fc bfc" id="L179" title="All 2 branches covered.">            for(int column = 0; column &lt; gY; column++)</span>
             {
                 //TODO: check whether the tile is checked and then draw based on that value
-<span class="fc" id="L183">                bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + &quot; &quot;);</span>
+<span class="fc" id="L182">                bld.append(gameBoard.get(row).get(column).getCurrentSymbol() + &quot; &quot;);</span>
             }
-<span class="fc" id="L185">            bld.append(&quot;\n&quot;);</span>
+<span class="fc" id="L184">            bld.append(&quot;\n&quot;);</span>
         }
-<span class="fc" id="L187">        return bld.toString();</span>
+<span class="fc" id="L186">        return bld.toString();</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

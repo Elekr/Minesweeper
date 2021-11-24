@@ -20,7 +20,6 @@ public class Menu {
         return gameDifficulty;
     }
 
-
     private int gridSize;
     private String gameDifficulty;
     int gamestate = 2;

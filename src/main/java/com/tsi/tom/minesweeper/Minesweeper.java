@@ -7,7 +7,8 @@ public class Minesweeper {
 
     private static final  Logger logger = Logger.getLogger(Minesweeper.class.getName());
 
-    enum GameState
+
+    public enum GameState
     {
         success,
         running,

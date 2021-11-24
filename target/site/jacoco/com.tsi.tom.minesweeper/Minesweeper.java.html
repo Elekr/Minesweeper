@@ -7,36 +7,37 @@ import java.util.logging.Logger;
 
 <span class="nc" id="L8">    private static final  Logger logger = Logger.getLogger(Minesweeper.class.getName());</span>
 
-<span class="nc" id="L10">    enum GameState</span>
+
+<span class="fc" id="L11">    public enum GameState</span>
     {
-<span class="nc" id="L12">        success,</span>
-<span class="nc" id="L13">        running,</span>
-<span class="nc" id="L14">        gameover,</span>
-<span class="nc" id="L15">        quit</span>
+<span class="fc" id="L13">        success,</span>
+<span class="fc" id="L14">        running,</span>
+<span class="fc" id="L15">        gameover,</span>
+<span class="fc" id="L16">        quit</span>
     }
 
     public static void main(String[] args){
 
         //Setup
-<span class="nc" id="L21">        GameState gameState = GameState.running;</span>
-<span class="nc" id="L22">        Scanner input = new Scanner(System.in);</span>
-<span class="nc" id="L23">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
-<span class="nc" id="L24">        String userChoice = input.next();</span>
+<span class="nc" id="L22">        GameState gameState = GameState.running;</span>
+<span class="nc" id="L23">        Scanner input = new Scanner(System.in);</span>
+<span class="nc" id="L24">        logger.info(&quot;Please choose your difficulty: 1:Easy 2:Medium 3:Hard&quot;);</span>
+<span class="nc" id="L25">        String userChoice = input.next();</span>
 
         //Initialise
-<span class="nc" id="L27">        Menu menu = new Menu(Integer.parseInt(userChoice));</span>
+<span class="nc" id="L28">        Menu menu = new Menu(Integer.parseInt(userChoice));</span>
 
         //Game loop
-<span class="nc bnc" id="L30" title="All 2 branches missed.">        while(gameState == GameState.running) //While the game is not over</span>
+<span class="nc bnc" id="L31" title="All 2 branches missed.">        while(gameState == GameState.running) //While the game is not over</span>
         {
-<span class="nc" id="L32">            menu.displayboard();</span>
+<span class="nc" id="L33">            menu.displayboard();</span>
             //User inputs tile
-<span class="nc" id="L34">            logger.info(&quot;Enter X coord&quot;);</span>
-<span class="nc" id="L35">            int userX = Integer.parseInt(input.next());</span>
-<span class="nc" id="L36">            logger.info(&quot;Enter Y coord&quot;);</span>
-<span class="nc" id="L37">            int userY = Integer.parseInt(input.next());</span>
-<span class="nc" id="L38">            gameState = menu.gameLoop(userX, userY, gameState);</span>
-<span class="nc" id="L39">        }</span>
-<span class="nc" id="L40">    }</span>
+<span class="nc" id="L35">            logger.info(&quot;Enter X coord&quot;);</span>
+<span class="nc" id="L36">            int userX = Integer.parseInt(input.next());</span>
+<span class="nc" id="L37">            logger.info(&quot;Enter Y coord&quot;);</span>
+<span class="nc" id="L38">            int userY = Integer.parseInt(input.next());</span>
+<span class="nc" id="L39">            gameState = menu.gameLoop(userX, userY, gameState);</span>
+<span class="nc" id="L40">        }</span>
+<span class="nc" id="L41">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

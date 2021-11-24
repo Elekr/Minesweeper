@@ -1,3 +1,4 @@
 com\tsi\tom\test\minesweepertest\GridTest.class
-com\tsi\tom\test\minesweepertest\MenuTest.class
+com\tsi\tom\test\minesweepertest\MenuTest$GameState.class
 com\tsi\tom\test\minesweepertest\TileTest.class
+com\tsi\tom\test\minesweepertest\MenuTest.class

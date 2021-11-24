@@ -147,11 +147,10 @@ public class Grid implements Game{
 
     public void addMines()
     {
-        Random random = new Random(seed);
+        Random random = new Random(seed); ///hell yeah, competitive minesweeper
         int saltMines = gTotalMines;
         while(saltMines != 0) //While there are still mines to be added to grid
         {
-            Math.random();
             int random_X = (int)Math.floor(random.nextDouble()*((gX - 1)-0+1)+0); //Generate a random number within the grid bounds
             int random_Y = (int)Math.floor(random.nextDouble()*((gY - 1)-0+1)+0);
 
